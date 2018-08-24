@@ -1,56 +1,3 @@
-# Work in progress!
-Not meant to be used yet.
-# non-static-php-jwt
-non-static-php-jwt is a wrapper for [firebase/php-jwt](https://github.com/firebase/php-jwt) to make it easily mockable
-with [phpspec/prophecy](https://github.com/phpspec/prophecy) (or any other mocking library) within your phpunit tests.
-
-## Installation
-```
-composer require steffenbrand/non-static-php-jwt
-```
-
-## Versioning
-The releases will match the release versions of [firebase/php-jwt](https://github.com/firebase/php-jwt) starting with ^5.0.
-The supported PHP versions will be ^7.1, since return types and type hinting are used.
-
-## Usage
-Since it's just a wrapper for [firebase/php-jwt](https://github.com/firebase/php-jwt), the usage is almost the same, except the fact that you have to create an instance of `\SteffenBrand\NonStaticPhpJwt\Jwt` first.
-
-### Encoding and decoding
-```php
-$jwt = new \SteffenBrand\NonStaticPhpJwt\Jwt();
-
-$key = 'example_key';
-$token = [
-    'iss' => 'http://example.org',
-    'aud' => 'http://example.com',
-    'iat' => 1356999524,
-    'nbf' => 1357000000
-];
-
-$webToken = $jwt->encode($token, $key);
-$decoded = $jwt->decode($webToken, $key, ['HS256']);
-
-var_dump($decoded);
-print_r((array) $decoded);
-```
-
-### Adding a leeway
-You can add a leeway to account for when there is a clock skew times between
-the signing and verifying servers. It is recommended that this leeway should
-not be bigger than a few minutes.
-
-Source: http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html#nbfDef
-
-The leeway if the fourth parameter of the decode method and defaults to `0`.
-```php
-$jwt->decode($jwt, $key, ['HS256'], $leeway = 60);
-```
-
-### Prophecising
-The primary goal of this library is to allow prophecising the results of JWT methods within you phpunit tests.
-
-```php
 <?php
 
 declare(strict_types=1);
@@ -110,4 +57,3 @@ class JwtTest extends TestCase
         $this->assertEquals($returnValue, $this->getSut()->sign());
     }
 }
-```
