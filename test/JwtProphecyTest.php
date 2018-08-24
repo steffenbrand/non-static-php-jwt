@@ -9,7 +9,7 @@ use Prophecy\Prophecy\MethodProphecy;
 use Prophecy\Prophecy\ObjectProphecy;
 use SteffenBrand\NonStaticPhpJwt\Jwt;
 
-class JwtTest extends TestCase
+class JwtProphecyTest extends TestCase
 {
     /**
      * @var Jwt

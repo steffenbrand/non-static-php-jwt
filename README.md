@@ -1,5 +1,3 @@
-# Work in progress!
-Not meant to be used yet.
 # non-static-php-jwt
 non-static-php-jwt is a wrapper for [firebase/php-jwt](https://github.com/firebase/php-jwt) to make it easily mockable
 with [phpspec/prophecy](https://github.com/phpspec/prophecy) (or any other mocking library) within your phpunit tests.
@@ -10,11 +8,11 @@ composer require steffenbrand/non-static-php-jwt
 ```
 
 ## Versioning
-The releases will match the release versions of [firebase/php-jwt](https://github.com/firebase/php-jwt) starting with ^5.0.
-The supported PHP versions will be ^7.1, since return types and type hinting are used.
+The releases will match the release versions of [firebase/php-jwt](https://github.com/firebase/php-jwt) starting with ^5.0.  
+The supported PHP versions will be ^7.1, since return types and type hinting are used in this library.
 
 ## Usage
-Since it's just a wrapper for [firebase/php-jwt](https://github.com/firebase/php-jwt), the usage is almost the same, except the fact that you have to create an instance of `\SteffenBrand\NonStaticPhpJwt\Jwt` first.
+It's just a wrapper for [firebase/php-jwt](https://github.com/firebase/php-jwt), so the usage is almost the same, except the fact that you have to create an instance of `\SteffenBrand\NonStaticPhpJwt\Jwt` first.
 
 ### Encoding and decoding
 ```php
